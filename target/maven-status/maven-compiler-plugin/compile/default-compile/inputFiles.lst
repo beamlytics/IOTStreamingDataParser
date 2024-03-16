@@ -1,0 +1,10 @@
+/Users/rtarway/mygithubprojects/ApacheBeam/schemaparsing/src/main/java/com/beamlytics/examples/pipelines/StarterPipeline.java
+/Users/rtarway/mygithubprojects/ApacheBeam/schemaparsing/src/main/java/com/beamlytics/examples/utils/ErrorMsg.java
+/Users/rtarway/mygithubprojects/ApacheBeam/schemaparsing/src/main/java/com/beamlytics/examples/transforms/NewTransform2.java
+/Users/rtarway/mygithubprojects/ApacheBeam/schemaparsing/src/main/java/com/beamlytics/examples/transforms/NewTransform1.java
+/Users/rtarway/mygithubprojects/ApacheBeam/schemaparsing/src/main/java/com/beamlytics/examples/utils/Print.java
+/Users/rtarway/mygithubprojects/ApacheBeam/schemaparsing/src/main/java/com/beamlytics/examples/utils/DeploymentAnnotations.java
+/Users/rtarway/mygithubprojects/ApacheBeam/schemaparsing/src/main/java/com/beamlytics/examples/utils/DeadLetterSink.java
+/Users/rtarway/mygithubprojects/ApacheBeam/schemaparsing/src/main/java/com/beamlytics/examples/utils/JSONUtils.java
+/Users/rtarway/mygithubprojects/ApacheBeam/schemaparsing/src/main/java/com/beamlytics/examples/options/StarterPipelineOptions.java
+/Users/rtarway/mygithubprojects/ApacheBeam/schemaparsing/src/main/java/com/beamlytics/examples/schema/TestSchema.java

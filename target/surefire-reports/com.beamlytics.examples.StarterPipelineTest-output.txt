@@ -1,0 +1,127 @@
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/Users/rtarway/.m2/repository/org/slf4j/slf4j-jdk14/1.7.30/slf4j-jdk14-1.7.30.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/Users/rtarway/.m2/repository/org/slf4j/slf4j-log4j12/1.7.25/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.JDK14LoggerFactory]
+Mar 16, 2024 5:34:36 PM org.apache.beam.sdk.coders.SerializableCoder checkEqualsMethodDefined
+WARNING: Can't verify serialized elements of type Shard have well defined equals method. This may produce incorrect results on some PipelineRunner implementations
+Mar 16, 2024 5:34:58 PM com.beamlytics.examples.utils.Print process
+INFO: printing final output Row: 
+timestamp:2024-03-16T22:34:58.799Z
+event_datetime:2024-03-16 22:03:57
+event:tempread
+timestamp2:1710628498799
+user_id:-8238997089958349813
+
+Mar 16, 2024 5:34:58 PM com.beamlytics.examples.utils.Print process
+INFO: printing final output Row: 
+timestamp:2024-03-16T22:34:58.890Z
+event_datetime:2024-03-16 22:03:57
+event:tempread
+timestamp2:1710628498890
+user_id:-5502127153844296399
+
+Mar 16, 2024 5:34:58 PM com.beamlytics.examples.utils.Print process
+INFO: printing final output Row: 
+timestamp:2024-03-16T22:34:58.890Z
+event_datetime:2024-03-16 22:03:57
+event:tempread
+timestamp2:1710628498890
+user_id:-8000855341052803930
+
+Mar 16, 2024 5:34:58 PM com.beamlytics.examples.utils.Print process
+INFO: printing final output Row: 
+timestamp:2024-03-16T22:34:58.890Z
+event_datetime:2024-03-16 22:03:18
+event:tempread
+timestamp2:1710628498890
+user_id:-5577667032189809512
+
+Mar 16, 2024 5:34:58 PM com.beamlytics.examples.utils.Print process
+INFO: printing final output Row: 
+timestamp:2024-03-16T22:34:58.891Z
+event_datetime:2024-03-16 22:03:18
+event:tempread
+timestamp2:1710628498891
+user_id:-7138513324125444188
+
+Mar 16, 2024 5:34:58 PM com.beamlytics.examples.utils.Print process
+INFO: printing final output Row: 
+timestamp:2024-03-16T22:34:58.891Z
+event_datetime:2024-03-16 22:03:18
+event:tempread
+timestamp2:1710628498891
+user_id:-8017334817008054382
+
+Mar 16, 2024 5:34:58 PM com.beamlytics.examples.utils.Print process
+INFO: printing final output Row: 
+timestamp:2024-03-16T22:34:58.891Z
+event_datetime:2024-03-16 22:03:05
+event:tempread
+timestamp2:1710628498891
+user_id:-6477869730029260022
+
+Mar 16, 2024 5:34:58 PM com.beamlytics.examples.utils.Print process
+INFO: printing final output Row: 
+timestamp:2024-03-16T22:34:58.891Z
+event_datetime:2024-03-16 22:03:05
+event:tempread
+timestamp2:1710628498891
+user_id:-8756940147295567847
+
+Mar 16, 2024 5:34:58 PM com.beamlytics.examples.utils.Print process
+INFO: printing final output Row: 
+timestamp:2024-03-16T22:34:58.891Z
+event_datetime:2024-03-16 22:03:05
+event:tempread
+timestamp2:1710628498891
+user_id:-4727867988787124250
+
+Mar 16, 2024 5:34:58 PM com.beamlytics.examples.utils.Print process
+INFO: printing final output Row: 
+timestamp:2024-03-16T22:34:58.892Z
+event_datetime:2024-03-16 22:03:08
+event:tempread
+timestamp2:1710628498892
+user_id:-5864245248600614516
+
+Mar 16, 2024 5:34:58 PM com.beamlytics.examples.utils.Print process
+INFO: printing final output Row: 
+timestamp:2024-03-16T22:34:58.892Z
+event_datetime:2024-03-16 22:03:08
+event:tempread
+timestamp2:1710628498892
+user_id:-8898056165942614097
+
+Mar 16, 2024 5:34:58 PM com.beamlytics.examples.utils.Print process
+INFO: printing final output Row: 
+timestamp:2024-03-16T22:34:58.892Z
+event_datetime:2024-03-16 22:03:08
+event:tempread
+timestamp2:1710628498892
+user_id:-4709892800127844310
+
+Mar 16, 2024 5:34:58 PM com.beamlytics.examples.utils.Print process
+INFO: printing final output Row: 
+timestamp:2024-03-16T22:34:58.892Z
+event_datetime:2024-03-16 22:03:75
+event:tempread
+timestamp2:1710628498892
+user_id:-4964684440727512320
+
+Mar 16, 2024 5:34:58 PM com.beamlytics.examples.utils.Print process
+INFO: printing final output Row: 
+timestamp:2024-03-16T22:34:58.893Z
+event_datetime:2024-03-16 22:03:75
+event:tempread
+timestamp2:1710628498893
+user_id:-5259979021395530139
+
+Mar 16, 2024 5:34:58 PM com.beamlytics.examples.utils.Print process
+INFO: printing final output Row: 
+timestamp:2024-03-16T22:34:58.893Z
+event_datetime:2024-03-16 22:03:75
+event:tempread
+timestamp2:1710628498893
+user_id:-4799866501946068794
+
