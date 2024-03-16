@@ -1,25 +1,24 @@
 package com.beamlytics.examples.utils;
 
-import javax.annotation.Nullable;
 import javax.annotation.processing.Generated;
 import org.apache.beam.sdk.schemas.Schema;
 
 @Generated("com.google.auto.value.processor.AutoValueProcessor")
 final class AutoValue_JSONUtils_JSONtoRowWithDeadLetterSink extends JSONUtils.JSONtoRowWithDeadLetterSink {
 
-  @Nullable
+  @javax.annotation.Nullable
   private final DeadLetterSink.SinkType sinkType;
 
   private final Schema schema;
 
   private AutoValue_JSONUtils_JSONtoRowWithDeadLetterSink(
-      @Nullable DeadLetterSink.SinkType sinkType,
+      @javax.annotation.Nullable DeadLetterSink.SinkType sinkType,
       Schema schema) {
     this.sinkType = sinkType;
     this.schema = schema;
   }
 
-  @Nullable
+  @javax.annotation.Nullable
   @Override
   DeadLetterSink.SinkType getSinkType() {
     return sinkType;
@@ -31,7 +30,7 @@ final class AutoValue_JSONUtils_JSONtoRowWithDeadLetterSink extends JSONUtils.JS
   }
 
   @Override
-  public boolean equals(Object o) {
+  public boolean equals(@org.checkerframework.checker.nullness.qual.Nullable Object o) {
     if (o == this) {
       return true;
     }
@@ -55,7 +54,7 @@ final class AutoValue_JSONUtils_JSONtoRowWithDeadLetterSink extends JSONUtils.JS
 
   static final class Builder extends JSONUtils.JSONtoRowWithDeadLetterSink.Builder {
     private DeadLetterSink.SinkType sinkType;
-    private Schema schema;
+    private @org.checkerframework.checker.nullness.qual.Nullable Schema schema;
     Builder() {
     }
     @Override
