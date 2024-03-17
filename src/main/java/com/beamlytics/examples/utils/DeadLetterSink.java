@@ -26,12 +26,11 @@ import org.apache.beam.sdk.values.PCollection;
 import org.apache.beam.sdk.values.PDone;
 import org.apache.beam.sdk.values.TypeDescriptor;
 import org.apache.beam.sdk.values.TypeDescriptors;
-import org.apache.http.annotation.Experimental;
 import org.joda.time.Instant;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.beamlytics.examples.options.StarterPipelineOptions;
+import com.beamlytics.examples.options.IOTDataPipelineOptions;
 import com.beamlytics.examples.utils.DeploymentAnnotations.NoPartialResultsOnDrain;
 
 /**
@@ -95,8 +94,8 @@ public class DeadLetterSink extends PTransform<PCollection<ErrorMsg>, PDone> {
   @Override
   public PDone expand(PCollection<ErrorMsg> input) {
 
-    StarterPipelineOptions options =
-        input.getPipeline().getOptions().as(StarterPipelineOptions.class);
+    IOTDataPipelineOptions options =
+        input.getPipeline().getOptions().as(IOTDataPipelineOptions.class);
 
     if (sinkType.equals(SinkType.BIGQUERY) && !options.getTestMode()) {
 

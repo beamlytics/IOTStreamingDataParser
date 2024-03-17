@@ -6,7 +6,7 @@ import org.apache.beam.sdk.options.PipelineOptions;
 
 
 
-public interface StarterPipelineOptions extends PipelineOptions {
+public interface IOTDataPipelineOptions extends PipelineOptions {
 
   @Description("topic name")
   @Default.String("test-topic")
@@ -21,19 +21,14 @@ public interface StarterPipelineOptions extends PipelineOptions {
 
   public void setTestMode(Boolean testMode);
 
-
-
-
-
-@Description("Deadletter Table for pipeline.")
-  @Default.String("Retail_Store.deadletter_data")
+  @Description("Deadletter Table for pipeline.")
+  @Default.String("IOTDataPipeline.deadletter_data")
   String getDeadLetterTable();
 
   void setDeadLetterTable(String deadletterBigQueryTable);
 
   @Description("Project used for data warehousing.")
   String getDataWarehouseOutputProject();
-
   void setDataWarehouseOutputProject(String dataWarehouseOutputProject);
   
 

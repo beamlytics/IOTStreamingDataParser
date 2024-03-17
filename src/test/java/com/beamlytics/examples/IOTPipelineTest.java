@@ -10,14 +10,14 @@ import org.checkerframework.checker.nullness.qual.UnknownKeyFor;
 import org.junit.Rule;
 import org.junit.Test;
 
-import com.beamlytics.examples.options.StarterPipelineOptions;
-import com.beamlytics.examples.pipelines.StarterPipeline;
-import com.beamlytics.examples.schema.TestSchema.EventSchema;
+import com.beamlytics.examples.options.IOTDataPipelineOptions;
+import com.beamlytics.examples.pipelines.IOTDataPipeline;
+import com.beamlytics.examples.schema.IOTDataSchema;
 
 
-public class StarterPipelineTest {
+public class IOTPipelineTest {
 
-StarterPipelineOptions options = PipelineOptionsFactory.as(StarterPipelineOptions.class);
+IOTDataPipelineOptions options = PipelineOptionsFactory.as(IOTDataPipelineOptions.class);
 
   {
     options.setTestMode(true);
@@ -33,9 +33,9 @@ StarterPipelineOptions options = PipelineOptionsFactory.as(StarterPipelineOption
   @Test
   public void testPipeline() {
     
-    @UnknownKeyFor @NonNull @Initialized PCollection<EventSchema> input =  p.apply(new TestStreamGenerator());
+    @UnknownKeyFor @NonNull @Initialized PCollection<IOTDataSchema> input =  p.apply(new TestStreamGenerator());
 
-StarterPipeline starterPipeline  = new StarterPipeline();
+IOTDataPipeline starterPipeline  = new IOTDataPipeline();
 
 starterPipeline.testEvents = input;
 try {

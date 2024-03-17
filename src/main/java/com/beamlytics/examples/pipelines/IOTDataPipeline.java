@@ -29,9 +29,9 @@ import org.apache.beam.sdk.transforms.ToJson;
 import org.apache.beam.sdk.values.PCollection;
 import org.apache.beam.sdk.values.Row;
 
-import com.beamlytics.examples.options.StarterPipelineOptions;
-import com.beamlytics.examples.schema.TestSchema.EventSchema;
-import com.beamlytics.examples.transforms.NewTransform1;
+import com.beamlytics.examples.options.IOTDataPipelineOptions;
+import com.beamlytics.examples.schema.IOTDataSchema;
+import com.beamlytics.examples.transforms.TransformIOTData;
 import com.beamlytics.examples.utils.Print;
 import com.google.common.annotations.VisibleForTesting;
 
@@ -53,23 +53,23 @@ import com.google.common.annotations.VisibleForTesting;
  *   --stagingLocation=<STAGING_LOCATION_IN_CLOUD_STORAGE>
  *   --runner=DataflowRunner
  */
-public class StarterPipeline {
-  private static final Logger LOG = Logger.getLogger(StarterPipeline.class.getName());
+public class IOTDataPipeline {
+  private static final Logger LOG = Logger.getLogger(IOTDataPipeline.class.getName());
   //private static final Logger LOG = LoggerFactory.getLogger(StarterPipeline.class);getLogger(StarterPipeline.class);
  
-  @VisibleForTesting public static PCollection<EventSchema> testEvents = null;
+  @VisibleForTesting public static PCollection<IOTDataSchema> testEvents = null;
 
 @SuppressWarnings({ "rawtypes", "unchecked" })
 public void startPipeline(Pipeline p) throws Exception
 {
-   StarterPipelineOptions options = p.getOptions().as(StarterPipelineOptions.class);
+   IOTDataPipelineOptions options = p.getOptions().as(IOTDataPipelineOptions.class);
    Boolean prodMode  = !options.getTestMode();
 
    PCollection<String> inputCollection = null;
    if (prodMode) {
     inputCollection =
           p.apply(
-              "ReadClickStream",
+              "ReadIOTStream",
               PubsubIO.readStrings()
                   .fromSubscription(options.getTopicName())
                   .withTimestampAttribute("TIMESTAMP"));
@@ -78,12 +78,12 @@ public void startPipeline(Pipeline p) throws Exception
       inputCollection = testEvents.apply(ToJson.of());
     }
   
-  PCollection<Row> transformed1 = inputCollection.apply(new NewTransform1());
+  PCollection<Row> transformed_iot_data = inputCollection.apply(new TransformIOTData());
   //PCollection<KV<String,Integer>> tranformed2  = transformed1.apply(new NewTransform2());
   
   
   //log final output
-  transformed1.apply("Printing",ParDo.of(new Print("printing final output ")));
+  transformed_iot_data.apply("Printing",ParDo.of(new Print("printing final output ")));
 
     
   p.run();
@@ -95,7 +95,7 @@ public void startPipeline(Pipeline p) throws Exception
     Pipeline p = Pipeline.create(
         PipelineOptionsFactory.fromArgs(args).withValidation().create());
   try {
-      new StarterPipeline().startPipeline(p);
+      new IOTDataPipeline().startPipeline(p);
     } catch (Exception e) {
       // TODO Auto-generated catch block
       e.printStackTrace();
