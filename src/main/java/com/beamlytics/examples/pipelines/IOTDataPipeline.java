@@ -82,8 +82,11 @@ public void startPipeline(Pipeline p) throws Exception
   //PCollection<KV<String,Integer>> tranformed2  = transformed1.apply(new NewTransform2());
   
   
-  //log final output
+  
   transformed_iot_data.apply("Printing",ParDo.of(new Print("printing final output ")));
+
+
+  
 
     
   p.run();
