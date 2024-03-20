@@ -93,12 +93,13 @@ public void startPipeline(Pipeline p) throws Exception
   //insert into bigquery
 
     // Streaming insert of aggregate data
-    transformed_iot_data.apply("WriteAggregateToBQ",
-        BigQueryIO.<Row>write().to(options.getAggregateTableName()).useBeamSchema()
-                .withWriteDisposition(BigQueryIO.Write.WriteDisposition.WRITE_APPEND)
-                .withCreateDisposition(BigQueryIO.Write.CreateDisposition.CREATE_IF_NEEDED));
+    if(prodMode) {
+        transformed_iot_data.apply("WriteAggregateToBQ",
+                BigQueryIO.<Row>write().to(options.getAggregateTableName()).useBeamSchema()
+                        .withWriteDisposition(BigQueryIO.Write.WriteDisposition.WRITE_APPEND)
+                        .withCreateDisposition(BigQueryIO.Write.CreateDisposition.CREATE_IF_NEEDED));
 
-
+    }
   
 
     
