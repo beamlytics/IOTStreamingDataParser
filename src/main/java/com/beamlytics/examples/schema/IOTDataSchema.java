@@ -7,7 +7,7 @@ import org.apache.beam.sdk.schemas.annotations.DefaultSchema;
 import org.apache.beam.sdk.schemas.annotations.SchemaFieldName;
 import org.joda.time.Instant;
 
-import com.beamlytics.examples.schema.IOTDataSchema.PageViewAggregator;
+
 import com.google.auto.value.AutoValue;
 
 @AutoValue
@@ -70,44 +70,6 @@ public abstract class IOTDataSchema {
 
   }
 
-  @AutoValue
-  @DefaultSchema(AutoValueSchema.class)
-  public abstract static class TempAvgAggregator {
-    public @Nullable abstract Long getDurationMS();
 
-    public @Nullable abstract Instant getStartTime();
-
-    public @Nullable abstract String getDeviceId();
-
-    public @Nullable abstract Double getMonitoredAttributeAverage();
-
-    public @Nullable abstract String getMonitoredAttribute();
-
-    public @Nullable abstract String getMonitoredAttributeUnit();
-
-    public abstract Builder toBuilder();
-
-    public static Builder builder() {
-
-      return new AutoValue_TempAvgAggregator.Builder();
-    }
-
-    @AutoValue.Builder
-    public abstract static class Builder {
-      public abstract Builder setDurationMS(Long value);
-
-      public abstract Builder setStartTime(Instant value);
-
-      public abstract Builder setDeviceId(String value);
-
-      public abstract Builder setMonitoredAttributeAverage(Double value);
-
-      public abstract Builder setMonitoredAttribute(String value);
-
-      public abstract Builder setMonitoredAttributeUnit(String value);
-
-      public abstract TempAvgAggregator build();
-    }
-  }
 
 }

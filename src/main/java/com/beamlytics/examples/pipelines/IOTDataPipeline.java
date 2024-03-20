@@ -21,7 +21,9 @@ import static org.apache.beam.vendor.guava.v32_1_2_jre.com.google.common.base.Pr
 
 import java.util.logging.Logger;
 
+import com.beamlytics.examples.schema.TempAvgAggregator;
 import org.apache.beam.sdk.Pipeline;
+import org.apache.beam.sdk.io.gcp.bigquery.BigQueryIO;
 import org.apache.beam.sdk.io.gcp.pubsub.PubsubIO;
 import org.apache.beam.sdk.options.PipelineOptionsFactory;
 import org.apache.beam.sdk.transforms.ParDo;
@@ -34,7 +36,7 @@ import com.beamlytics.examples.schema.IOTDataSchema;
 import com.beamlytics.examples.transforms.TransformIOTData;
 import com.beamlytics.examples.utils.Print;
 import com.google.common.annotations.VisibleForTesting;
-
+import org.joda.time.Duration;
 
 
 /**
@@ -77,13 +79,24 @@ public void startPipeline(Pipeline p) throws Exception
       checkNotNull(testEvents, "In TestMode you must set testEvents");
       inputCollection = testEvents.apply(ToJson.of());
     }
-  
-  PCollection<Row> transformed_iot_data = inputCollection.apply(new TransformIOTData());
-  //PCollection<KV<String,Integer>> tranformed2  = transformed1.apply(new NewTransform2());
+
+    PCollection<Row> transformed_iot_data = inputCollection.apply(new TransformIOTData(Duration.standardMinutes(1)));
+
+   //PCollection<TempAvgAggregator> transformed_iot_data = inputCollection.apply(new TransformIOTData(Duration.standardMinutes(1)));
+   //PCollection<KV<String,Integer>> tranformed2  = transformed1.apply(new NewTransform2());
   
   
   
   transformed_iot_data.apply("Printing",ParDo.of(new Print("printing final output ")));
+
+
+  //insert into bigquery
+
+    // Streaming insert of aggregate data
+    transformed_iot_data.apply("WriteAggregateToBQ",
+        BigQueryIO.<Row>write().to(options.getAggregateTableName()).useBeamSchema()
+                .withWriteDisposition(BigQueryIO.Write.WriteDisposition.WRITE_APPEND)
+                .withCreateDisposition(BigQueryIO.Write.CreateDisposition.CREATE_IF_NEEDED));
 
 
   

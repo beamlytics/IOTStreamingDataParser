@@ -3,59 +3,113 @@ SLF4J: Found binding in [jar:file:/Users/rtarway/.m2/repository/org/slf4j/slf4j-
 SLF4J: Found binding in [jar:file:/Users/rtarway/.m2/repository/org/slf4j/slf4j-log4j12/1.7.25/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
 SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
 SLF4J: Actual binding is of type [org.slf4j.impl.JDK14LoggerFactory]
-Mar 17, 2024 5:10:54 PM org.apache.beam.sdk.coders.SerializableCoder checkEqualsMethodDefined
+Mar 18, 2024 10:24:51 PM org.apache.beam.sdk.coders.SerializableCoder checkEqualsMethodDefined
 WARNING: Can't verify serialized elements of type Shard have well defined equals method. This may produce incorrect results on some PipelineRunner implementations
-Mar 17, 2024 5:11:58 PM com.beamlytics.examples.utils.Print process
+Mar 18, 2024 10:28:54 PM com.beamlytics.examples.utils.Print process
 INFO: printing final output Row: 
-key:Row: 
-device_id:device-3
-
-value:Row: 
-average:21.558556491928563
-
-
-Mar 17, 2024 5:11:58 PM com.beamlytics.examples.utils.Print process
-INFO: printing final output Row: 
-key:Row: 
 device_id:device-2
+monitored_attribute:temperature
+monitored_attribute_unit:celsius
+monitored_attribute_average:24.713337768227525
+startTime:1710818760000
+durationMS:60000
 
-value:Row: 
-average:26.057078609902206
-
-
-Mar 17, 2024 5:11:58 PM com.beamlytics.examples.utils.Print process
+Mar 18, 2024 10:28:54 PM com.beamlytics.examples.utils.Print process
 INFO: printing final output Row: 
-key:Row: 
 device_id:device-1
+monitored_attribute:temperature
+monitored_attribute_unit:celsius
+monitored_attribute_average:24.36566156786163
+startTime:1710818760000
+durationMS:60000
 
-value:Row: 
-average:28.368392606967692
-
-
-Mar 17, 2024 5:11:58 PM com.beamlytics.examples.utils.Print process
+Mar 18, 2024 10:28:54 PM com.beamlytics.examples.utils.Print process
 INFO: printing final output Row: 
-key:Row: 
 device_id:device-3
+monitored_attribute:temperature
+monitored_attribute_unit:celsius
+monitored_attribute_average:21.711051630152948
+startTime:1710818760000
+durationMS:60000
 
-value:Row: 
-average:29.068852057730055
-
-
-Mar 17, 2024 5:11:58 PM com.beamlytics.examples.utils.Print process
+Mar 18, 2024 10:28:54 PM com.beamlytics.examples.utils.Print process
 INFO: printing final output Row: 
-key:Row: 
 device_id:device-2
+monitored_attribute:temperature
+monitored_attribute_unit:celsius
+monitored_attribute_average:28.19370007313197
+startTime:1710818640000
+durationMS:60000
 
-value:Row: 
-average:26.587791779833474
-
-
-Mar 17, 2024 5:11:58 PM com.beamlytics.examples.utils.Print process
+Mar 18, 2024 10:28:54 PM com.beamlytics.examples.utils.Print process
 INFO: printing final output Row: 
-key:Row: 
 device_id:device-1
+monitored_attribute:temperature
+monitored_attribute_unit:celsius
+monitored_attribute_average:23.036343420916918
+startTime:1710818640000
+durationMS:60000
 
-value:Row: 
-average:20.494034462543414
+Mar 18, 2024 10:28:54 PM com.beamlytics.examples.utils.Print process
+INFO: printing final output Row: 
+device_id:device-3
+monitored_attribute:temperature
+monitored_attribute_unit:celsius
+monitored_attribute_average:26.90661309893536
+startTime:1710818640000
+durationMS:60000
 
+Mar 18, 2024 10:28:54 PM com.beamlytics.examples.utils.Print process
+INFO: printing final output Row: 
+device_id:device-2
+monitored_attribute:temperature
+monitored_attribute_unit:celsius
+monitored_attribute_average:28.19830226282292
+startTime:1710818700000
+durationMS:60000
+
+Mar 18, 2024 10:28:54 PM com.beamlytics.examples.utils.Print process
+INFO: printing final output Row: 
+device_id:device-1
+monitored_attribute:temperature
+monitored_attribute_unit:celsius
+monitored_attribute_average:21.563755024212938
+startTime:1710818700000
+durationMS:60000
+
+Mar 18, 2024 10:28:54 PM com.beamlytics.examples.utils.Print process
+INFO: printing final output Row: 
+device_id:device-3
+monitored_attribute:temperature
+monitored_attribute_unit:celsius
+monitored_attribute_average:25.117986974329895
+startTime:1710818700000
+durationMS:60000
+
+Mar 18, 2024 10:28:54 PM com.beamlytics.examples.utils.Print process
+INFO: printing final output Row: 
+device_id:device-2
+monitored_attribute:temperature
+monitored_attribute_unit:celsius
+monitored_attribute_average:25.452261848952755
+startTime:1710818880000
+durationMS:60000
+
+Mar 18, 2024 10:28:54 PM com.beamlytics.examples.utils.Print process
+INFO: printing final output Row: 
+device_id:device-1
+monitored_attribute:temperature
+monitored_attribute_unit:celsius
+monitored_attribute_average:21.52309235790628
+startTime:1710818880000
+durationMS:60000
+
+Mar 18, 2024 10:28:54 PM com.beamlytics.examples.utils.Print process
+INFO: printing final output Row: 
+device_id:device-3
+monitored_attribute:temperature
+monitored_attribute_unit:celsius
+monitored_attribute_average:24.0089903406516
+startTime:1710818880000
+durationMS:60000
 

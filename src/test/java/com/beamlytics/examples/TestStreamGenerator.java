@@ -47,7 +47,7 @@ public class TestStreamGenerator extends PTransform<PBegin, PCollection<IOTDataS
 
     return input
         //.apply(GenerateSequence.from(0).to(3).withRate(1, Duration.standardSeconds(5)))
-        .apply(GenerateSequence.from(0).to(2).withRate(1, Duration.standardMinutes(1)))
+        .apply(GenerateSequence.from(0).to(5).withRate(1, Duration.standardMinutes(1)))
         .apply(ParDo.of(new CreateEventSchemaStream()));
 
   }

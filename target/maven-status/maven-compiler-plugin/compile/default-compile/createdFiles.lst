@@ -2,9 +2,12 @@ com/beamlytics/examples/utils/AutoValue_ErrorMsg$Builder.class
 com/beamlytics/examples/utils/DeadLetterSink.class
 com/beamlytics/examples/utils/JSONUtils$JSONtoRowWithDeadLetterSink.class
 com/beamlytics/examples/utils/JSONUtils$JSONtoRowWithDeadLetterSink$Builder.class
+com/beamlytics/examples/schema/AutoValue_TempAvgAggregator$Builder.class
+com/beamlytics/examples/schema/TempAvgAggregator.class
 com/beamlytics/examples/utils/DeploymentAnnotations$PartialResultsExpectedOnDrain.class
 com/beamlytics/examples/schema/IOTDataSchema.class
 com/beamlytics/examples/transforms/NewTransform2.class
+com/beamlytics/examples/transforms/TransformIOTData$CreateAverageViewAggregatorMetadata.class
 com/beamlytics/examples/utils/JSONUtils$ConvertJSONtoPOJO.class
 com/beamlytics/examples/utils/JSONUtils.class
 com/beamlytics/examples/utils/DeadLetterSink$SinkType.class
@@ -13,6 +16,7 @@ com/beamlytics/examples/utils/AutoValue_JSONUtils_JSONtoRowWithDeadLetterSink.cl
 com/beamlytics/examples/utils/ErrorMsg$Builder.class
 com/beamlytics/examples/schema/AutoValue_Location$Builder.class
 com/beamlytics/examples/utils/DeploymentAnnotations.class
+com/beamlytics/examples/transforms/TransformIOTData$CreateAverageViewAggregatorMetadata$1.class
 com/beamlytics/examples/schema/Location$Builder.class
 com/beamlytics/examples/schema/AutoValue_IOTDataSchema$Builder.class
 com/beamlytics/examples/options/IOTDataPipelineOptions.class
@@ -22,8 +26,10 @@ com/beamlytics/examples/utils/DeploymentAnnotations$NoPartialResultsOnDrain.clas
 com/beamlytics/examples/utils/AutoValue_ErrorMsg.class
 com/beamlytics/examples/pipelines/IOTDataPipeline.class
 com/beamlytics/examples/schema/IOTDataSchema$Builder.class
+com/beamlytics/examples/schema/TempAvgAggregator$Builder.class
 com/beamlytics/examples/utils/Print.class
 com/beamlytics/examples/transforms/TransformIOTData.class
 com/beamlytics/examples/utils/JSONUtils$CreateErrorEvents.class
 com/beamlytics/examples/schema/AutoValue_IOTDataSchema.class
 com/beamlytics/examples/utils/AutoValue_JSONUtils_JSONtoRowWithDeadLetterSink$Builder.class
+com/beamlytics/examples/schema/AutoValue_TempAvgAggregator.class

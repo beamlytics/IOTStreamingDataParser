@@ -31,10 +31,13 @@ public abstract class Location {
 
   @AutoValue.Builder
   public abstract static class Builder {
-   
+
+
     public abstract Builder setLatitude(@Nullable String latitude);
+
     public abstract Builder setLongitude(@Nullable String longitude);
-    public abstract Builder setAddressLine1(@Nullable String addressLine1);
+
+    public abstract Builder setAddressLine1(@Nullable String sddressLine1);
     public abstract Builder setAddressLine2(@Nullable String addressLine2);
     public abstract Builder setCity(@Nullable String city);
     public abstract Builder setState(@Nullable String state);

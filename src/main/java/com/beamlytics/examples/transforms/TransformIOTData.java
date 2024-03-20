@@ -6,9 +6,6 @@ import org.apache.beam.sdk.schemas.Schema;
 import org.apache.beam.sdk.schemas.Schema.Field;
 import org.apache.beam.sdk.schemas.Schema.FieldType;
 import org.apache.beam.sdk.transforms.DoFn;
-import org.apache.beam.sdk.transforms.DoFn.OutputReceiver;
-import org.apache.beam.sdk.transforms.DoFn.ProcessElement;
-import org.apache.beam.sdk.transforms.DoFn.Timestamp;
 import org.apache.beam.sdk.transforms.PTransform;
 import org.apache.beam.sdk.transforms.ParDo;
 import org.apache.beam.sdk.transforms.windowing.FixedWindows;
@@ -22,8 +19,9 @@ import org.joda.time.Duration;
 
 import com.beamlytics.examples.options.IOTDataPipelineOptions;
 import com.beamlytics.examples.schema.IOTDataSchema;
+import com.beamlytics.examples.schema.TempAvgAggregator;
 import com.beamlytics.examples.utils.JSONUtils;
-import com.beamlytics.examples.schema.IOTDataSchema.TempAvgAggregator;
+
 import javax.annotation.Nullable;
 import org.apache.beam.sdk.schemas.transforms.*;
 import org.joda.time.Instant;
@@ -33,20 +31,19 @@ import org.joda.time.Instant;
 
 public class TransformIOTData extends PTransform< PCollection<String>,PCollection<Row> >{
 
-     Duration pageViewCountWindowDuration;
+    Duration averageWindowDuration;
 
-    public TransformIOTData(Duration pageViewCountWindowDuration) {
-    this.pageViewCountWindowDuration = pageViewCountWindowDuration;
+    public TransformIOTData(Duration averageWindowDuration) {
+    this.averageWindowDuration = averageWindowDuration;
     }
 
-    public TransformIOTData(@Nullable String name, Duration pageViewCountWindowDuration) {
+    public TransformIOTData(@Nullable String name, Duration averageWindowDuration) {
     super(name);
-    this.pageViewCountWindowDuration = pageViewCountWindowDuration;
+    this.averageWindowDuration = averageWindowDuration;
     }
 
-    
-    
     @Override
+
     public @UnknownKeyFor @NonNull @Initialized PCollection<Row> expand(
             @UnknownKeyFor @NonNull @Initialized PCollection<String> input) {
 
@@ -71,10 +68,9 @@ public class TransformIOTData extends PTransform< PCollection<String>,PCollectio
                                                                            //.withAllowedLateness(Duration.standardSeconds(10)))
                                              //.triggering(AfterWatermark.pastEndOfWindow())
                                              //.discardingFiredPanes());
-                                             .apply(Group.<Row>byFieldNames("device_id")
-                                                        .aggregateField("monitored_value", org.apache.beam.sdk.transforms.Mean.of(), "average"));
-                                            
-                                             .apply(CreateAverageViewAggregatorMetadata.create(pageViewCountWindowDuration.toMillis()));  
+                                             .apply(Group.<Row>byFieldNames("device_id","monitored_unit","monitored_attribute" )
+                                                        .aggregateField("monitored_value", org.apache.beam.sdk.transforms.Mean.of(), "monitored_attribute_average"))
+                                            .apply(CreateAverageViewAggregatorMetadata.create(averageWindowDuration.getMillis()));
         
 
         return windowed_iotRows;
@@ -82,7 +78,7 @@ public class TransformIOTData extends PTransform< PCollection<String>,PCollectio
 
 
 public static class CreateAverageViewAggregatorMetadata
-      extends PTransform<PCollection<Row>, PCollection<TempAvgAggregator>> {
+      extends PTransform<PCollection<Row>, PCollection<Row>> {
 
     Long durationMS;
 
@@ -100,19 +96,26 @@ public static class CreateAverageViewAggregatorMetadata
     }
 
     @Override
-    public PCollection<TempAvgAggregator> expand(PCollection<Row> input) {
+    public PCollection<Row> expand(PCollection<Row> input) {
 
       // TODO #18 the schema registry for PageViewAggregator throws a class cast issue
       Schema schema =
           Schema.of(
-              Field.of("page", FieldType.STRING),
-              Field.of("count", FieldType.INT64),
+              Field.of("device_id", FieldType.STRING),
+              Field.of("monitored_attribute", FieldType.STRING),
+              Field.of("monitored_attribute_unit", FieldType.STRING),
+              Field.of("monitored_attribute_average", FieldType.DOUBLE),
               Field.of("startTime", FieldType.INT64),
-              Field.of("durationMS", FieldType.INT64));
+              Field.of("durationMS", FieldType.INT64)
+              );
+
+
+
+
 
       return input
           // Note key and value are results of Group + Count operation in the previous transform.
-          .apply(Select.fieldNames("key.page", "value.count"))
+          .apply(Select.fieldNames("key.device_id","key.monitored_attribute","key.monitored_unit", "value.monitored_attribute_average"))
           // We need to add these fields to the ROW object before we convert the POJO
           .apply(
               AddFields.<Row>create()
@@ -129,14 +132,14 @@ public static class CreateAverageViewAggregatorMetadata
                       // are (start,end] with epsilon of 1 ms
                       Row row =
                           Row.fromRow(input)
-                              .withFieldValue("durationMS", durationMS)
-                              .withFieldValue("startTime", time.getMillis() - durationMS + 1)
-                              .build();
+                               .withFieldValue("startTime", time.getMillis() - durationMS + 1)
+                               .withFieldValue("durationMS", durationMS)
+                               .build();
                       o.output(row);
                     }
                   }))
-          .setRowSchema(schema)
-          .apply(Convert.fromRows(TempAvgAggregator.class));
+          .setRowSchema(schema);
+          //.apply(Convert.fromRows(TempAvgAggregator.class));
     }
   }
 
