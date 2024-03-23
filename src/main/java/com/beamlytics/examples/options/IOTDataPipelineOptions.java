@@ -34,7 +34,7 @@ public interface IOTDataPipelineOptions extends PipelineOptions {
 
   @Description("Table used for storing avergae temp.")
   String getAggregateTableName();
-  void getAggregateTableName(String aggregateTableName);
+  void setAggregateTableName(String aggregateTableName);
 
   
 
