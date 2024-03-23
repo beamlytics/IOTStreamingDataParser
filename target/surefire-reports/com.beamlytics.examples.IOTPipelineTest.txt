@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: com.beamlytics.examples.IOTPipelineTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 244.288 s - in com.beamlytics.examples.IOTPipelineTest
